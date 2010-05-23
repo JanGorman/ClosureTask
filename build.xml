@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="closure" default="compile-merge" basedir=".">
+
+    <taskdef name="closure" classname="ClosureTask" />
+
+    <target name="compile" description="Compile individual files">
+        <closure compilationLevel="SIMPLE_OPTIMIZATIONS">
+            <fileset dir="${project.basedir}">
+                <exclude name="*-comp.js" />
+                <include name="*.js" />
+            </fileset>
+        </closure>
+    </target>
+    
+    <target name="compile-merge" description="Merge files into one">
+        <closure
+            compilationLevel="SIMPLE_OPTIMIZATIONS"
+            merge="true"
+            outputFile="compiled.js"
+            >
+            <fileset dir="${project.basedir}">
+                <exclude name="*-comp.js" />
+                <include name="*.js" />
+            </fileset>
+        </closure>
+    </target>
+
+</project>
